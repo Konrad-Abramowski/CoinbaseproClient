@@ -1,5 +1,7 @@
 package com.example.coinbaseprowebsocket.model;
 
+import java.util.Date;
+
 public class ControllerResponse {
 
     private String instrument;
@@ -14,7 +16,11 @@ public class ControllerResponse {
         this.bid = coinbaseproResponse.getBest_bid();
         this.ask = coinbaseproResponse.getBest_ask();
         this.last = coinbaseproResponse.getLast_size();
-        this.time = coinbaseproResponse.getTime().toString();
+        Date date = coinbaseproResponse.getTime();
+        String hours = String.valueOf(date.getHours());
+        String minutes = String.valueOf(date.getMinutes());
+        String seconds = String.valueOf(date.getSeconds());
+        this.time = hours + ":" + minutes + ":" + seconds;
     }
 
     public String getInstrument() {
