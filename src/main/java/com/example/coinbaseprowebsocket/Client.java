@@ -19,7 +19,7 @@ public class Client {
     final static CountDownLatch messageLatch = new CountDownLatch(1);
 
     public static void main(String[] args) {
-        SpringApplication.run(CoinbaseprowebsocketApplication.class, args);
+        SpringApplication.run(Client.class, args);
         try {
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
             String uri = "wss://ws-feed.pro.coinbase.com/";
