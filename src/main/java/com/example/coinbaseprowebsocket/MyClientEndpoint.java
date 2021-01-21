@@ -38,7 +38,17 @@ public class MyClientEndpoint {
         System.out.println("Received message in client: " + message);
         Gson g = new Gson();
         CoinbaseproResponse coinbaseproResponse = g.fromJson(message, CoinbaseproResponse.class);
-        CoinbaseproController.data = coinbaseproResponse;
+        if (coinbaseproResponse.getType().equals("ticker")) {
+            if (coinbaseproResponse.getProduct_id().equals("BTC-USD")) {
+                CoinbaseproController.btcUSD = coinbaseproResponse;
+            } else if (coinbaseproResponse.getProduct_id().equals("BTC-EUR")) {
+                CoinbaseproController.btcEUR = coinbaseproResponse;
+            } else if (coinbaseproResponse.getProduct_id().equals("ETH-USD")) {
+                CoinbaseproController.ethUSD = coinbaseproResponse;
+            } else if (coinbaseproResponse.getProduct_id().equals("ETH-EUR")) {
+                CoinbaseproController.ethEUR = coinbaseproResponse;
+            }
+        }
         Client.messageLatch.countDown();
     }
 

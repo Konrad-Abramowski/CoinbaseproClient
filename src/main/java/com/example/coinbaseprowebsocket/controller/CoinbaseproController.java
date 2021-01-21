@@ -31,19 +31,28 @@ import java.util.List;
 @Controller
 public class CoinbaseproController {
 
-    public static CoinbaseproResponse data;
+    public static CoinbaseproResponse btcUSD;
+    public static CoinbaseproResponse btcEUR;
+    public static CoinbaseproResponse ethUSD;
+    public static CoinbaseproResponse ethEUR;
 
 
     @GetMapping()
     public ResponseEntity<List<ControllerResponse>> getCryptocurrencyData() throws JSONException, IOException {
         List<ControllerResponse> arrayList = new ArrayList<>();
-        if(data != null){
-            arrayList.add(new ControllerResponse(data));
+        if(btcUSD != null){
+            arrayList.add(new ControllerResponse(btcUSD));
         }
-
+        if(btcEUR != null){
+            arrayList.add(new ControllerResponse(btcEUR));
+        }
+        if(ethUSD != null){
+            arrayList.add(new ControllerResponse(ethUSD));
+        }
+        if(ethEUR != null){
+            arrayList.add(new ControllerResponse(ethUSD));
+        }
         return  ResponseEntity.ok(arrayList);
     }
-
-
 
 }
