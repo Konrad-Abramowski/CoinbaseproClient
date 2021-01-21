@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  app:
+    image: 'coinbasaeproclient-app:latest'
+    build:
+      context: .
+    container_name: coinbasaeproclient-app
+    ports:
+      - 8080:8080
